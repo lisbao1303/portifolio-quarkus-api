@@ -34,18 +34,36 @@ public class ExperienceService {
         return experience;
     }
 
-    // Update an existing experience
     public Experience update(String id, Experience updatedData) {
         Experience existingExperience = getById(id);
         if (existingExperience != null) {
-            existingExperience.company = updatedData.company;
-            existingExperience.position = updatedData.position;
-            existingExperience.description = updatedData.description;
-            existingExperience.technologies = updatedData.technologies;
-            existingExperience.dateStart = updatedData.dateStart;
-            existingExperience.dateEnd = updatedData.dateEnd;
-            existingExperience.adicionalInfo = updatedData.adicionalInfo;
-            experienceRepository.persist(existingExperience);
+            if (updatedData.getCompany() != null) {
+                existingExperience.setCompany(updatedData.getCompany());
+            }
+            if (updatedData.getPosition() != null) {
+                existingExperience.setPosition(updatedData.getPosition());
+            }
+            if (updatedData.getLocation() != null) {
+                existingExperience.setLocation(updatedData.getLocation());
+            }
+            if (updatedData.getDescription() != null) {
+                existingExperience.setDescription(updatedData.getDescription());
+            }
+            if (updatedData.getTechnologies() != null) {
+                existingExperience.setTechnologies(updatedData.getTechnologies());
+            }
+            if (updatedData.getDateStart() != null) {
+                existingExperience.setDateStart(updatedData.getDateStart());
+            }
+            if (updatedData.getDateEnd() != null) {
+                existingExperience.setDateEnd(updatedData.getDateEnd());
+            }
+            if (updatedData.getAdditionalInfo() != null) {
+                existingExperience.setAdditionalInfo(updatedData.getAdditionalInfo());
+            }
+
+            // Persistindo o objeto atualizado
+            experienceRepository.update(existingExperience);
         }
         return existingExperience;
     }

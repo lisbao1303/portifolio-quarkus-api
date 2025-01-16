@@ -39,23 +39,50 @@ public class UserPublicDataService {
     public UserPublicData updateUserPublicData(String id, UserPublicData userPublicData) {
         UserPublicData existingUserPublicData = getById(id);
         if (existingUserPublicData != null) {
-            existingUserPublicData.name = userPublicData.name;
-            existingUserPublicData.title = userPublicData.title;
-            existingUserPublicData.about = userPublicData.about;
-            existingUserPublicData.birth = userPublicData.birth;
-            existingUserPublicData.birthPlace = userPublicData.birthPlace;
-            existingUserPublicData.email = userPublicData.email;
-            existingUserPublicData.phone = userPublicData.phone;
-            existingUserPublicData.adress = userPublicData.adress;
-            existingUserPublicData.github = userPublicData.github;
-            existingUserPublicData.linkedin = userPublicData.linkedin;
-            existingUserPublicData.pricipalTech = userPublicData.pricipalTech;
-            existingUserPublicData.skills = userPublicData.skills;
-            existingUserPublicData.adicionalInfo = userPublicData.adicionalInfo;
-            userPublicDataRepository.persist(existingUserPublicData);
+            if (userPublicData.getName() != null) {
+                existingUserPublicData.setName(userPublicData.getName());
+            }
+            if (userPublicData.getTitle() != null) {
+                existingUserPublicData.setTitle(userPublicData.getTitle());
+            }
+            if (userPublicData.getAbout() != null) {
+                existingUserPublicData.setAbout(userPublicData.getAbout());
+            }
+            if (userPublicData.getBirth() != null) {
+                existingUserPublicData.setBirth(userPublicData.getBirth());
+            }
+            if (userPublicData.getBirthPlace() != null) {
+                existingUserPublicData.setBirthPlace(userPublicData.getBirthPlace());
+            }
+            if (userPublicData.getEmail() != null) {
+                existingUserPublicData.setEmail(userPublicData.getEmail());
+            }
+            if (userPublicData.getPhone() != null) {
+                existingUserPublicData.setPhone(userPublicData.getPhone());
+            }
+            if (userPublicData.getAddress() != null) {
+                existingUserPublicData.setAddress(userPublicData.getAddress());
+            }
+            if (userPublicData.getGithub() != null) {
+                existingUserPublicData.setGithub(userPublicData.getGithub());
+            }
+            if (userPublicData.getLinkedin() != null) {
+                existingUserPublicData.setLinkedin(userPublicData.getLinkedin());
+            }
+            if (userPublicData.getPrincipalTech() != null) {
+                existingUserPublicData.setPrincipalTech(userPublicData.getPrincipalTech());
+            }
+            if (userPublicData.getSkills() != null) {
+                existingUserPublicData.setSkills(userPublicData.getSkills());
+            }
+            if (userPublicData.getAdditionalInfo() != null) {
+                existingUserPublicData.setAdditionalInfo(userPublicData.getAdditionalInfo());
+            }
+            userPublicDataRepository.update(existingUserPublicData);
         }
         return existingUserPublicData;
     }
+
 
     // Delete a user public data
     public boolean deleteUserPublicData(String id) {

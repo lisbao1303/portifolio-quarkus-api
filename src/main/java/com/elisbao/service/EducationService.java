@@ -34,23 +34,43 @@ public class EducationService {
         return education;
     }
 
-    // Update an existing education
     public Education update(String id, Education updatedData) {
         Education existingEducation = getById(id);
         if (existingEducation != null) {
-            existingEducation.title = updatedData.title;
-            existingEducation.institute = updatedData.institute;
-            existingEducation.type = updatedData.type;
-            existingEducation.description = updatedData.description;
-            existingEducation.tecnologies = updatedData.tecnologies;
-            existingEducation.dateStart = updatedData.dateStart;
-            existingEducation.dateEnd = updatedData.dateEnd;
-            existingEducation.academic = updatedData.academic;
-            existingEducation.adicionalInfo = updatedData.adicionalInfo;
-            educationRepository.persist(existingEducation);
+            if (updatedData.getTitle() != null) {
+                existingEducation.setTitle(updatedData.getTitle());
+            }
+            if (updatedData.getInstitute() != null) {
+                existingEducation.setInstitute(updatedData.getInstitute());
+            }
+            if (updatedData.getType() != null) {
+                existingEducation.setType(updatedData.getType());
+            }
+            if (updatedData.getDescription() != null) {
+                existingEducation.setDescription(updatedData.getDescription());
+            }
+            if (updatedData.getTechnologies() != null) {
+                existingEducation.setTechnologies(updatedData.getTechnologies());
+            }
+            if (updatedData.getDateStart() != null) {
+                existingEducation.setDateStart(updatedData.getDateStart());
+            }
+            if (updatedData.getDateEnd() != null) {
+                existingEducation.setDateEnd(updatedData.getDateEnd());
+            }
+            if (updatedData.getAcademic() != null) {
+                existingEducation.setAcademic(updatedData.getAcademic());
+            }
+            if (updatedData.getAdditionalInfo() != null) {
+                existingEducation.setAdditionalInfo(updatedData.getAdditionalInfo());
+            }
+
+            // Persistindo o objeto atualizado
+            educationRepository.update(existingEducation);
         }
         return existingEducation;
     }
+
 
     // Delete education by ID
     public boolean delete(String id) {

@@ -36,15 +36,33 @@ public class ProjectService {
     public Project update(String id, Project project) {
         Project existingProject = Project.findById(id);
         if (existingProject != null) {
-            existingProject.name = project.name;
-            existingProject.description = project.description;
-            existingProject.tecnologies = project.tecnologies;
-            existingProject.link_repository = project.link_repository;
-            existingProject.link_demo = project.link_demo;
-            existingProject.dateStart = project.dateStart;
-            existingProject.dateEnd = project.dateEnd;
-            existingProject.adicionalInfo = project.adicionalInfo;
-            existingProject.persist();
+            if (project.getName() != null) {
+                existingProject.setName(project.getName());
+            }
+            if (project.getDescription() != null) {
+                existingProject.setDescription(project.getDescription());
+            }
+            if (project.getTechnologies() != null) {
+                existingProject.setTechnologies(project.getTechnologies());
+            }
+            if (project.getLinkRepository() != null) {
+                existingProject.setLinkRepository(project.getLinkRepository());
+            }
+            if (project.getLinkDemo() != null) {
+                existingProject.setLinkDemo(project.getLinkDemo());
+            }
+            if (project.getDateStart() != null) {
+                existingProject.setDateStart(project.getDateStart());
+            }
+            if (project.getDateEnd() != null) {
+                existingProject.setDateEnd(project.getDateEnd());
+            }
+            if (project.getAdditionalInfo() != null) {
+                existingProject.setAdditionalInfo(project.getAdditionalInfo());
+            }
+
+            // Persistir as alterações
+            projectRepository.update(existingProject);
         }
         return existingProject;
     }

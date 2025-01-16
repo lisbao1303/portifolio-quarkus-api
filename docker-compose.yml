@@ -9,17 +9,17 @@ services:
     environment:
       MONGO_INITDB_DATABASE: portifolio_db # Banco de dados inicial
 
-  quarkus-api:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: quarkus-api-container
-    ports:
-      - "8080:8080" # Porta da API Quarkus
-    environment:
-      - quarkus.mongodb.connection-string=mongodb://mongodb:27017
-    depends_on:
-      - mongodb
+#  quarkus-api:
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    container_name: quarkus-api-container
+#    ports:
+#      - "8080:8080" # Porta da API Quarkus
+#    environment:
+#      - quarkus.mongodb.connection-string=mongodb://mongodb:27017
+#    depends_on:
+#      - mongodb
 
 volumes:
   mongo-data:
