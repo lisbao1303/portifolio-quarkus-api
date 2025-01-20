@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Build Quarkus Application') {
             steps {
-                sh './mvnw clean package -Pnative -Dquarkus.native.container-build=true'
+                sh 'mvn clean package -Pnative'
             }
         }
         stage('Build Docker Image') {
