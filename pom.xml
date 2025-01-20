@@ -63,6 +63,7 @@
     </dependencies>
 
     <build>
+        <finalName>portifolio-quarkus-api</finalName> <!-- Nome fixo para o arquivo de saída -->
         <plugins>
             <plugin>
                 <groupId>${quarkus.platform.group-id}</groupId>

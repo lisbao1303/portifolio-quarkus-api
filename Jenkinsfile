@@ -24,7 +24,7 @@ pipeline {
         }
         stage('Build Quarkus Application') {
             steps {
-                sh 'mvn clean package -Pnative'
+                sh 'mvn clean package'
             }
         }
 
