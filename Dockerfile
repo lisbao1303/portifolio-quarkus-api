@@ -5,6 +5,7 @@ FROM openjdk:17-jdk-slim
 WORKDIR /workspace
 
 ENV HOST 0.0.0.0
+ENV PORT 8080
 
 # Copie o arquivo .jar gerado para o contêiner
 COPY /target/portifolio-quarkus-api.jar /workspace/portifolio-quarkus-api.jar
