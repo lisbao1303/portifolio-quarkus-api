@@ -13,11 +13,21 @@ pipeline {
                 checkout scm
             }
         }
+        stage('Prepare Environment') {
+                    steps {
+                        // Carregar o arquivo secreto
+                        withCredentials([file(credentialsId: 'env_port_quarkus', variable: 'ENV_FILE')]) {
+                            // Copiar o arquivo .env para o workspace
+                            sh 'cp $ENV_FILE .env'
+                        }
+                    }
+        }
         stage('Build Quarkus Application') {
             steps {
                 sh 'mvn clean package -Pnative'
             }
         }
+
         stage('Build Docker Image') {
             steps {
                 script {
