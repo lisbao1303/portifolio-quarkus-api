@@ -1,7 +1,6 @@
 pipeline {
     agent any
     environment {
-        // Substitua pelos seus valores
         GCP_PROJECT = 'restapispringboot'
         REGION = 'us-central1'
         IMAGE_NAME = 'portifolio-quarkus-api'
