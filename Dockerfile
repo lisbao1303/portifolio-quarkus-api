@@ -4,6 +4,8 @@ FROM openjdk:17-jdk-slim
 # Defina o diretório de trabalho dentro do contêiner
 WORKDIR /workspace
 
+ENV HOST 0.0.0.0
+
 # Copie o arquivo .jar gerado para o contêiner
 COPY /target/portifolio-quarkus-api.jar /workspace/portifolio-quarkus-api.jar
 
