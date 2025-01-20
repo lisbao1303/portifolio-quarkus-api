@@ -51,12 +51,14 @@ pipeline {
                 }
         stage('Push Docker Image') {
             steps {
-                script {
-                    docker.withRegistry("https://${DOCKER_REGISTRY}", 'gcr-json-key') {
-                        docker.image("${DOCKER_REGISTRY}/${IMAGE_NAME}:latest").push()
-                    }
-                }
-            }
+                            script {
+                                // Autentica o Docker com o Google Cloud Registry
+                                sh """
+                                    gcloud auth configure-docker ${REGION}-docker.pkg.dev --quiet
+                                    docker push ${DOCKER_REGISTRY}/${IMAGE_NAME}:latest
+                                """
+                            }
+                        }
         }
         stage('Deploy to Cloud Run') {
             steps {
