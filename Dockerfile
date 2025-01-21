@@ -1,17 +1,17 @@
-# Use uma imagem base do OpenJDK
-FROM openjdk:17-jdk-slim
+# Use a imagem base recomendada pelo Quarkus
+FROM eclipse-temurin:17-jre-alpine
 
 # Defina o diretório de trabalho dentro do contêiner
 WORKDIR /workspace
 
-ENV HOST 0.0.0.0
-ENV PORT 8080
+ENV HOST=0.0.0.0
+ENV PORT=8080
 
-# Copie o arquivo .jar gerado para o contêiner
-COPY /target/portifolio-quarkus-api.jar /workspace/portifolio-quarkus-api.jar
-
-# Exponha a porta 8080
+# Exponha a porta usada pela aplicação
 EXPOSE 8080
 
-# Comando para rodar o .jar
-CMD ["java", "-jar", "/workspace/portifolio-quarkus-api.jar"]
+# Copie o JAR gerado para o contêiner
+COPY target/portifolio-quarkus-api-runner.jar /workspace/portifolio-quarkus-api-runner.jar
+
+# Comando para rodar o JAR
+CMD ["java", "-jar", "/workspace/portifolio-quarkus-api-runner.jar"]

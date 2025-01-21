@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Build Quarkus Application') {
             steps {
-                sh 'mvn clean package'
+                sh 'mvn clean package -Dquarkus.package.type=uber-jar'
             }
         }
 
